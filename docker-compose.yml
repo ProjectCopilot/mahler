@@ -1,0 +1,29 @@
+version: '2'
+services:
+  concierge:
+    build: ./components/concierge
+    ports:
+      - "80:80"
+    links:
+      - "mailroom:mailroom"
+    volumes:
+      - ./components/concierge:/usr/src/app
+  mailroom:
+    build: ./components/mailroom
+    volumes:
+      - ./components/mailroom:/usr/src/app
+  volunteer:
+    build: ./components/volunteer
+    ports:
+      - "3000:3000"
+    links:
+      - "mailroom:mailroom"
+    volumes:
+      - ./components/volunteer:/usr/src/app
+  vitals:
+    build: ./components/vitals
+    ports:
+      - "4455:4455"
+    volumes:
+      - ./components/vitals:/usr/src/app
+
