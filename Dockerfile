@@ -15,6 +15,8 @@ RUN  echo "    IdentityFile /.ssh/id_rsa" >> /etc/ssh/ssh_config
 WORKDIR components
 RUN while read in; do git clone $in; done < projects.csv
 
+WORKDIR /usr/src/app
+
 # Start the components
 RUN docker-compose up
 
