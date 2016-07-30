@@ -13,7 +13,7 @@ RUN  echo "    IdentityFile /.ssh/id_rsa" >> /etc/ssh/ssh_config
 
 # Download the components
 WORKDIR components
-RUN while read in; do git clone $in; done < projects.csv
+RUN while read in; do git clone $in; done < projects.lst
 
 WORKDIR /usr/src/app
 
