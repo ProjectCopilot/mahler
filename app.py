@@ -6,6 +6,9 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
+    # Uptime check
+    if request.headers.get('X-Uptime-Check') == 'True':
+        return 'OK'
     return 'wip'
 
 if __name__ == '__main__':
